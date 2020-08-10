@@ -19,3 +19,16 @@ header {
     padding: 25px;
 }
 
+container {
+    width: 100%;
+    padding-top: 20px;
+    clear: both;
+    float: right;
+}
+
+section {
+    overflow: auto;
+    clear: both;
+    width: 100%;
+}
+
