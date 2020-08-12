@@ -32,7 +32,7 @@ function showWeather(cityInput) {
     $("#day5").empty();
 
     const oneDay = "https://api.openweathermap.org/data/2.5/weather?q="
-        + cityInput + "&units=imperial" + "&appid=4a66f4b8c2e64a35f3d8e1aad7a55b96";
+        + cityInput + "&units=imperial" + "&appid=453878fdfe982b0a2fb17c12c02d111b";
     console.log("oneDay", oneDay);
 
     $.ajax({
@@ -54,7 +54,7 @@ function showWeather(cityInput) {
         );
 
         const fiveDay = "https://api.openweathermap.org/data/2.5/onecall?"
-            + "lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=4a66f4b8c2e64a35f3d8e1aad7a55b96";
+            + "lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=453878fdfe982b0a2fb17c12c02d111b";
         console.log("fiveDay", fiveDay);
 
         $.ajax({
