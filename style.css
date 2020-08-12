@@ -32,3 +32,32 @@ section {
     width: 100%;
 }
 
+#sideNav {
+    height: 100%;
+    position: fixed;
+    top: 90px;
+    left: 0;
+    background-color: lightgray;
+}
+
+h1 {
+    font-size: 20px;
+    text-align: left;
+    padding:20px 0px 10px 5px; 
+}
+
+#basic-text1 {
+    background-color: lightskyblue;
+
+}
+
+.fas {
+    color: whitesmoke;
+}
+
+h2 { 
+    font-size: 30px;
+    text-align: left;
+    font-weight: bolder;
+    padding: 20px;
+}
