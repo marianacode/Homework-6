@@ -1,17 +1,17 @@
-const startDate = moment().format("MM/DD/YYYY");
-const day1 = moment().add(1, "days").format("MM/DD/YYYY");
-const day2 = moment().add(2, "days").format("MM/DD/YYYY");
-const day3 = moment().add(3, "days").format("MM/DD/YYYY");
-const day4 = moment().add(4, "days").format("MM/DD/YYYY");
-const day5 = moment().add(5, "days").format("MM/DD/YYYY");
+var startDate = moment().format("MM/DD/YYYY");
+var day1 = moment().add(1, "days").format("MM/DD/YYYY");
+var day2 = moment().add(2, "days").format("MM/DD/YYYY");
+var day3 = moment().add(3, "days").format("MM/DD/YYYY");
+var day4 = moment().add(4, "days").format("MM/DD/YYYY");
+var day5 = moment().add(5, "days").format("MM/DD/YYYY");
 
 $(document).ready(function () {
     console.log("ready!");
 
     $("#basic-text1").on("click", function (event) {
         event.preventDefault();
-        const cityInput = $("#input").val();
-        const allCities = [];
+        var cityInput = $("#input").val();
+        var allCities = [];
 
         allCities = JSON.parse(localStorage.getItem("allCities")) || [];
         allCities.push(cityInput);
@@ -31,7 +31,7 @@ function showWeather(cityInput) {
     $("#day4").empty();
     $("#day5").empty();
 
-    const oneDay = "https://api.openweathermap.org/data/2.5/weather?q="
+    var oneDay = "https://api.openweathermap.org/data/2.5/weather?q="
         + cityInput + "&units=imperial" + "&appid=453878fdfe982b0a2fb17c12c02d111b";
     console.log("oneDay", oneDay);
 
@@ -40,9 +40,9 @@ function showWeather(cityInput) {
         method: "GET",
     }).then(function (response) {
 
-        let iconUrl = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
-        let lat = response.coord.lat;
-        let lon = response.coord.lon;
+        var iconUrl = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+        var lat = response.coord.lat;
+        var lon = response.coord.lon;
 
         $("#dailyWeather").append(
             "<div class='col s12 m6'>"
@@ -53,7 +53,7 @@ function showWeather(cityInput) {
             + "</div>"
         );
 
-        const fiveDay = "https://api.openweathermap.org/data/2.5/onecall?"
+        var fiveDay = "https://api.openweathermap.org/data/2.5/onecall?"
             + "lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=453878fdfe982b0a2fb17c12c02d111b";
         console.log("fiveDay", fiveDay);
 
@@ -62,11 +62,11 @@ function showWeather(cityInput) {
             method: "GET",
         }).then(function (response) {
 
-            const iconUrl1 = "http://openweathermap.org/img/w/" + response.daily[0].weather[0].icon + ".png";
-            const iconUrl2 = "http://openweathermap.org/img/w/" + response.daily[1].weather[0].icon + ".png";
-            const iconUrl3 = "http://openweathermap.org/img/w/" + response.daily[2].weather[0].icon + ".png";
-            const iconUrl4 = "http://openweathermap.org/img/w/" + response.daily[3].weather[0].icon + ".png";
-            const iconUrl5 = "http://openweathermap.org/img/w/" + response.daily[4].weather[0].icon + ".png";
+            var iconUrl1 = "http://openweathermap.org/img/w/" + response.daily[0].weather[0].icon + ".png";
+            var iconUrl2 = "http://openweathermap.org/img/w/" + response.daily[1].weather[0].icon + ".png";
+            var iconUrl3 = "http://openweathermap.org/img/w/" + response.daily[2].weather[0].icon + ".png";
+            var iconUrl4 = "http://openweathermap.org/img/w/" + response.daily[3].weather[0].icon + ".png";
+            var iconUrl5 = "http://openweathermap.org/img/w/" + response.daily[4].weather[0].icon + ".png";
 
             $("#dailyWeather").append(
                 "<div class='col s12 m6'>"
@@ -148,34 +148,37 @@ function showWeather(cityInput) {
     })
 }
 
+
+
+
 function showCities() {
-    $("#cityButtons").empty();
-    let arrayFromStorage = JSON.parse(localStorage.getItem("allCities")) || [];
-    let arrayLength = arrayFromStorage.lenght;
-
-    for (let i = 0; i < arrayLength; i++) {
-        let cityNameFromArray = arrayFromStorage[i];
-
-        $("#cityButtons").append(
-            "<div class='list-group'>"
-
-            + "<button class='list-group-item'>" + cityNameFromArray 
-            + "</button>")
-
-        }
-    }
-
-    showCities();
+    $("#cityButtons").empty(); 
+    var arrayFromStorage = JSON.parse(localStorage.getItem("allCities")) || []; 
+    var arrayLength = arrayFromStorage.length; 
+  
+    for (var i = 0; i < arrayLength; i++) { 
+      var cityNameFromArray = arrayFromStorage[i]; 
+  
+      $("#cityButtons").append (
+        
+        "<div class='list-group'>"
     
-    $("#cityButtons").on("click", ".list-group-item", function(event) {
-        event.preventDefault();
-        let cityInput = ($(this).text());
-        showWeather(cityInput);
-    })
-
-
-
-
+      
+      + "<button class='list-group-item'>" + cityNameFromArray 
+      + "</button>")
+    } 
+  } 
+  
+  showCities (); 
+  
+  
+  $("#cityButtons").on("click", ".list-group-item", function(event) {
+    event.preventDefault();
+    var cityInput = ($(this).text());
+    showWeather(cityInput); 
+  }) 
+  
+   
 
 
 
